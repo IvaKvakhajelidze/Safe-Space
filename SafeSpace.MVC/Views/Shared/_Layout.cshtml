@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SafeSpace</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SafeSpace.MVC.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm" style="background-color:#210B2C;">
+            <div class="navbar-collapse collapse d-sm-inline-flex">
+                <ul class="navbar-nav">
+                    <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/Logo.png" alt="SafeSpace Logo"class="me-2"/>
+                        <span>SafeSpace</span>
+                    </a>
+                    <li class="nav-item" style="font-size: 25px">
+                        <a class="nav-link text-light" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item" style="font-size: 25px">
+                        <a class="nav-link text-light" asp-controller="Story" asp-action="Create">Post Story</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+
+                    @if (string.IsNullOrEmpty(Context.Session.GetString("UserId")))
+                    {
+                        <li class="nav-item me-2">
+                            <a class="btn signin-btn" asp-controller="Account" asp-action="SignIn">Sign In</a>
+                        </li>
+
+                        <li class="nav-item me-2">
+                            <a class="btn register-btn" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="btn profile-btn" asp-controller="Profile" asp-action="Index">Profile</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            SafeSpace - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy & Policy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

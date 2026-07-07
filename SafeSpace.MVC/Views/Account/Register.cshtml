@@ -1,0 +1,91 @@
+﻿@model SafeSpace.Domain.Entities.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="register-container">
+    <div class="register-card">
+
+        <h1 class="register-title">Join SafeSpace</h1>
+
+        <p class="register-subtitle">Create your account and become part of a space where stories matter.</p>
+
+        <hr />
+
+        <form asp-controller="Account" asp-action="Register" method="post" autocomplete="off" onsubmit="if (!$(this).valid()) { return false; } this.querySelector('button[type=submit]').disabled = true;">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger">
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Name" class="custom-label">Username</label>
+
+                <input asp-for="Name" class="custom-input" placeholder="Choose a username..." autocomplete="off" />
+
+                <span asp-validation-for="Name" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label asp-for="Email" class="custom-label">Email</label>
+
+                <input asp-for="Email" class="custom-input" placeholder="Enter your email..." autocomplete="off" />
+
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="custom-label">Password</label>
+
+                <input asp-for="PasswordHash" type="password" class="custom-input" placeholder="Create a password..." autocomplete="off" />
+
+                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="mb-4">
+
+                <label asp-for="DateOfBirth" class="custom-label">Date of Birth</label>
+
+                <input asp-for="DateOfBirth" type="date" class="custom-input"/>
+
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="register-buttons">
+
+                <button type="submit" class="btn register-main-btn">Create Account</button>
+
+                <a asp-controller="Home" asp-action="Index" class="btn home-btn">Cancel</a>
+
+            </div>
+
+        </form>
+
+        <div class="signin-link">
+
+            Already have an account?
+
+            <a asp-controller="Account" asp-action="SignIn">Sign In</a>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

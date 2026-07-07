@@ -1,0 +1,670 @@
+/* =========================================================
+   1) BASE & REUSABLE GLOBAL STYLES
+   ========================================================= */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width:768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background: linear-gradient( 180deg, #210B2C 0%, #2F1240 40%, #3B1A52 100% );
+    color: white;
+}
+
+/* =========================================================
+   2) FORMS & INTERACTIVE INPUT RESETS
+   ========================================================= */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem rgba(188,150,230,.5);
+    border-color: #BC96E6;
+}
+
+.custom-input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #3A1D4F;
+    color: white;
+    border: 1px solid #BC96E6;
+}
+
+    .custom-input:focus {
+        outline: none;
+        border-color: #FFD166;
+    }
+
+.custom-label {
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+}
+
+/* =========================================================
+   3) NAVIGATION COMPONENT
+   ========================================================= */
+.navbar {
+    background-color: #210B2C !important;
+    border-block: solid;
+    border-bottom-color: darkmagenta;
+}
+
+.navbar-brand {
+    color: #FFD166 !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+    .navbar-brand img {
+        border-radius: 50%;
+        width: 50px;
+        height: 40px;
+    }
+
+.nav-link {
+    color: white !important;
+    margin-left: 10px;
+    transition: .3s;
+}
+
+    .nav-link:hover {
+        color: #BC96E6 !important;
+    }
+
+.signin-btn,
+.register-btn,
+.profile-btn {
+    border-radius: 10px;
+    transition: all .3s ease;
+    padding-left: 18px;
+    padding-right: 18px;
+    background: transparent;
+}
+
+.signin-btn {
+    border: 1px solid white;
+    color: white;
+}
+
+    .signin-btn:hover {
+        background: white;
+        color: #210B2C;
+        transform: translateY(-2px);
+    }
+
+.register-btn {
+    border: 1px solid #FFD166;
+    color: #FFD166;
+}
+
+    .register-btn:hover {
+        background: #FFD166;
+        color: #210B2C;
+        transform: translateY(-2px);
+    }
+
+.profile-btn {
+    margin-right: 20px;
+    border: 1px solid #BC96E6;
+    color: #BC96E6;
+}
+
+    .profile-btn:hover {
+        background: #BC96E6;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+/* =========================================================
+   4) LANDING & STATIC SIDEBAR COMPONENTS
+   ========================================================= */
+.hero-section {
+    background: #210B2C;
+    color: white;
+    padding: 60px;
+    border-radius: 25px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+    .hero-section h1 {
+        color: #FFD166;
+        font-weight: 700;
+    }
+
+    .hero-section p {
+        opacity: .85;
+    }
+
+.quote-section {
+    position: sticky;
+    top: 100px;
+}
+
+.quote-card {
+    background: #210B2C;
+    border-radius: 20px;
+    padding: 25px;
+    color: white;
+    border-left: 4px solid #FFD166;
+    margin-bottom: 20px;
+}
+
+    .quote-card h4 {
+        color: #FFD166;
+        margin-bottom: 20px;
+    }
+
+.quote-text {
+    color: #BC96E6;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: 20px 0;
+}
+
+.mental-health-image {
+    height: 320px;
+    width: 100%;
+    border-radius: 20px;
+    opacity: 0.95;
+    border-right: 4px solid #FFD166;
+}
+
+/* =========================================================
+   5) STORIES COMPONENT (DISPLAY & CREATION)
+   ========================================================= */
+.story-card {
+    background: #2B123B;
+    color: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    margin-right: 100px;
+    border-radius: 20px;
+    border: 1px solid rgba(188,150,230,.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    transition: .3s;
+}
+
+    .story-card:hover {
+        transform: translateY(-3px);
+        border-color: #BC96E6;
+    }
+
+.story-header h3 {
+    color: #BC96E6;
+    font-weight: 600;
+}
+
+.story-header small {
+    color: #c5b4d9;
+}
+
+.story-content {
+    margin-top: 15px;
+    line-height: 1.8;
+}
+
+.story-create-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.story-create-card {
+    width: 800px;
+    background: #2B123B;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+    border: 1px solid rgba(188,150,230,.2);
+    color: white;
+}
+
+.story-create-title {
+    text-align: center;
+    color: #FFD166;
+    font-weight: 700;
+}
+
+.story-create-subtitle {
+    text-align: center;
+    color: #c5b4d9;
+    margin-bottom: 30px;
+}
+
+.story-textarea {
+    width: 100%;
+    background: #3A1D4F;
+    border: 1px solid #BC96E6;
+    color: white;
+    border-radius: 15px;
+    padding: 15px;
+    resize: none;
+}
+
+    .story-textarea:focus {
+        outline: none;
+        border-color: #FFD166;
+    }
+
+.post-story-btn {
+    background: #FFD166;
+    color: #210B2C;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+    .post-story-btn:hover {
+        transform: translateY(-2px);
+        background: #ffe08a;
+    }
+
+.story-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* =========================================================
+   6) COMMENTS COMPONENT & PAGINATION
+   ========================================================= */
+.comment-title {
+    color: #BC96E6;
+    margin-bottom: 20px;
+}
+
+.comment-box {
+    background: #3A1D4F;
+    border-left: 4px solid #BC96E6;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    height: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+    .comment-box p {
+        margin-bottom: 15px;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-input {
+    width: 100%;
+    background: #3A1D4F;
+    color: white;
+    border: 1px solid #BC96E6;
+    border-radius: 15px;
+    padding: 12px;
+    resize: none;
+    text-indent: 0;
+    text-align: left;
+}
+
+    .comment-input::placeholder {
+        color: #c5b4d9;
+    }
+
+    .comment-input:focus {
+        outline: none;
+        border-color: #FFD166;
+    }
+
+.comment-btn {
+    margin-top: 10px;
+    background: #210B2C;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    transition: .3s;
+}
+
+    .comment-btn:hover {
+        background: #BC96E6;
+        transform: translateY(-2px);
+    }
+
+.likeComment-btn {
+    border-radius: 10px;
+    transition: all .3s ease;
+    background: transparent;
+    border: 1px #BC96E6;
+    color: #BC96E6;
+}
+
+    .likeComment-btn:hover {
+        background: #BC96E6;
+        color: #210B2C;
+        transform: translateY(-2px);
+    }
+
+.comment-like-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    align-self: flex-end;
+}
+
+.hidden-comment {
+    display: none;
+}
+
+.show-more-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.show-more-btn {
+    border: none;
+    background: #BC96E6;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: .3s;
+    text-decoration: none;
+}
+
+    .show-more-btn:hover {
+        background: #FFD166;
+        color: #210B2C;
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+
+.load-more-btn {
+    background: #BC96E6;
+    color: #210B2C;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all .3s;
+}
+
+    .load-more-btn:hover {
+        background: #FFD166;
+        transform: translateY(-2px);
+    }
+
+/* =========================================================
+   7) USER PROFILE EXPERIENCE
+   ========================================================= */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.profile-card {
+    background: #2B123B;
+    color: white;
+    padding: 40px;
+    border-radius: 25px;
+    width: 700px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    border: 1px solid rgba(188,150,230,.2);
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #FFD166;
+    color: #210B2C;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.profile-card h2 {
+    text-align: center;
+}
+
+.profile-subtitle {
+    text-align: center;
+    color: #c5b4d9;
+}
+
+.info-item {
+    margin-top: 20px;
+}
+
+.profile-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-btn {
+    border: 1px solid #BC96E6;
+    color: #BC96E6;
+}
+
+    .home-btn:hover {
+        background: #BC96E6;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+.edit-btn {
+    border: 1px solid #FFD166;
+    color: #FFD166;
+}
+
+    .edit-btn:hover {
+        background: #FFD166;
+        color: #210B2C;
+        transform: translateY(-2px);
+    }
+
+.logout-btn {
+    border: 1px solid #BC96E6;
+    color: #BC96E6;
+    transition: .3s;
+}
+
+    .logout-btn:hover {
+        background: #BC96E6;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+.delete-btn {
+    border: 1px solid #ff5c5c;
+    color: #ff5c5c;
+}
+
+    .delete-btn:hover {
+        background: #ff5c5c;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+.my-stories-section {
+    margin-top: 40px;
+}
+
+.my-story-card {
+    background: #3A1D4F;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.delete-story-btn {
+    background: #FFD166;
+    color: #210B2C;
+    margin-top: 15px;
+}
+
+    .delete-story-btn:hover {
+        background: #BC96E6;
+        color: white;
+    }
+
+/* =========================================================
+   8) AUTHENTICATION INTERFACES (SIGN IN / REGISTER)
+   ========================================================= */
+.signin-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.signin-card {
+    width: 500px;
+    background: #2B123B;
+    padding: 40px;
+    border-radius: 25px;
+    color: white;
+    border: 1px solid rgba(188,150,230,.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+}
+
+.signin-title {
+    text-align: center;
+    color: #FFD166;
+    font-weight: 700;
+}
+
+.signin-subtitle {
+    text-align: center;
+    color: #c5b4d9;
+    margin-bottom: 30px;
+}
+
+.signin-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.signin-main-btn {
+    background: #FFD166;
+    color: #210B2C;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+    .signin-main-btn:hover {
+        background: #ffe08a;
+        transform: translateY(-2px);
+    }
+
+.register-link {
+    text-align: center;
+    margin-top: 30px;
+    color: #c5b4d9;
+}
+
+    .register-link a {
+        color: #FFD166;
+        text-decoration: none;
+        margin-left: 5px;
+    }
+
+        .register-link a:hover {
+            color: white;
+        }
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.register-card {
+    width: 600px;
+    background: #2B123B;
+    padding: 40px;
+    border-radius: 25px;
+    color: white;
+    border: 1px solid rgba(188,150,230,.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+}
+
+.register-title {
+    text-align: center;
+    color: #FFD166;
+    font-weight: 700;
+}
+
+.register-subtitle {
+    text-align: center;
+    color: #c5b4d9;
+    margin-bottom: 30px;
+}
+
+.register-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.register-main-btn {
+    background: #FFD166;
+    color: #210B2C;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+    .register-main-btn:hover {
+        background: #ffe08a;
+        transform: translateY(-2px);
+    }
+
+.signin-link {
+    text-align: center;
+    margin-top: 30px;
+    color: #c5b4d9;
+}
+
+    .signin-link a {
+        color: #FFD166;
+        text-decoration: none;
+        margin-left: 5px;
+    }
+
+        .signin-link a:hover {
+            color: white;
+        }

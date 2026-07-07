@@ -1,0 +1,66 @@
+﻿@model SafeSpace.MVC.Models.SignInViewModel
+
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<div class="signin-container">
+    <div class="signin-card">
+
+        <h1 class="signin-title">Welcome Back</h1>
+
+        <p class="signin-subtitle">Continue your SafeSpace journey</p>
+
+        <hr />
+
+        <form asp-controller="Account" asp-action="SignIn" method="post" onsubmit="if (!$(this).valid()) { return false; } this.querySelector('button[type=submit]').disabled = true;">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-4">
+
+                <label asp-for="Email" class="custom-label">Email</label>
+
+                <input asp-for="Email" class="custom-input" placeholder="Enter your email..." autocomplete="on" />
+
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="mb-4">
+
+                <label asp-for="Password" class="custom-label">Password</label>
+
+                <input asp-for="Password" type="password" class="custom-input" placeholder="Enter your password..." autocomplete="on" />
+
+                <span asp-validation-for="Password"class="text-danger"></span>
+
+            </div>
+
+            <div class="signin-buttons">
+
+                <button type="submit" class="btn signin-main-btn">Sign In</button>
+
+                <a asp-controller="Home" asp-action="Index" class="btn home-btn">Cancel</a>
+
+            </div>
+
+        </form>
+
+        <div class="register-link">
+
+            Don't have an account?
+
+            <a asp-controller="Account" asp-action="Register">Register</a>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

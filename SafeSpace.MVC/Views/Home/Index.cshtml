@@ -1,0 +1,157 @@
+﻿@model SafeSpace.MVC.Models.HomeViewModel
+
+<div class="hero-section text-center mb-5">
+
+    <h1 class="display-4">Welcome to SafeSpace</h1>
+
+    <p class="lead">Share your thoughts and support others.</p>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+
+        
+        @foreach (var story in Model.Stories)
+        {
+            <div class="story-card" id="story-@story.Id">
+                <div class="story-header">
+
+                    <h3>@story.Title</h3>
+
+                    <div class="story-content">
+
+                        <p>@story.Text</p>
+
+                    </div>
+
+                    <small>Posted by @story.User.Name • @story.CreatedAt</small>
+
+                </div>
+
+                <hr />
+
+                <h5 class="comment-title">Comments (@story.Comments.Count)</h5>
+
+                @{
+                    Guid? selectedStoryId = ViewBag.SelectedStoryId;
+
+                    int defaultAmount = 2;
+                    int currentAmount = defaultAmount;
+
+                    if (selectedStoryId == story.Id)
+                    {
+                        currentAmount = ViewBag.CommentsToShow;
+                    }
+
+                    var comments = story.Comments.OrderByDescending(c => c.likeAmount).Take(currentAmount).ToList();
+                }
+
+
+                @if (TempData["CommentErrorStoryId"] != null && (Guid)TempData["CommentErrorStoryId"] == story.Id)
+                {
+                    <div class="text-danger">
+
+                        @TempData["CommentError"]
+
+                    </div>
+                }
+
+                 
+                @foreach (var comment in comments)
+                {
+                    <div class="comment-box">
+                        <div class="comment-header">
+
+                            <strong>@comment.User.Name</strong>
+
+                            <small>@comment.CreatedAt</small>
+
+                        </div>
+
+                        <p>@comment.Text</p>
+
+                        <div class="comment-like-section">
+
+                            <span class="like-count">@comment.likeAmount</span>
+
+                            <form asp-controller="Comment" asp-action="Like" method="post">
+
+                                <input type="hidden" name="commentId" value="@comment.Id" />
+
+                                <input type="hidden" name="storyId" value="@story.Id" />
+
+                                <button type="submit" class="likeComment-btn">
+                                    <img src="~/images/like.png" style="width:20px;height:20px;" />
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </div>
+                }
+
+                @if (story.Comments.Count > currentAmount)
+                {
+                    <div class="show-more-container">
+
+                        <a asp-controller="Home" asp-action="Index" asp-route-storyId="@story.Id" asp-route-commentsToShow="@(currentAmount+3)" class="show-more-btn">Show More</a>
+
+                    </div>
+                }
+
+                <form asp-controller="Comment" asp-action="Create" method="post" onsubmit="if (!$(this).valid()) { return false; } this.querySelector('button[type=submit]').disabled = true;">
+
+                    <input type="hidden" name="StoryId" value="@story.Id" />
+
+                    <textarea name="Text" class="comment-input" placeholder="Write something supportive..."></textarea>
+
+
+                    <button type="submit" class="comment-btn">Add Comment</button>
+
+                </form>
+
+            </div>
+        }
+
+    </div>
+
+    <div class="col-lg-4">
+        <div class="quote-section">
+            <div class="quote-card">
+
+                <h4>A Quick Quote to Reset</h4>
+
+                <p class="quote-text">"@Model.Quote.Text"</p>
+
+                <small>— @Model.Quote.Author</small>
+
+            </div>
+
+            <img src="~/images/DesignImage.png"class="mental-health-image" />
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        window.addEventListener("load", function () 
+        {
+            const storyId = "@ViewBag.ScrollToStoryId";
+
+            if (storyId) 
+            {
+                const story = document.getElementById("story-" + storyId);
+
+                if (story) 
+                {
+                    story.scrollIntoView({behavior: "smooth", block: "center"});
+                }
+            }
+
+        });
+    </script>
+}

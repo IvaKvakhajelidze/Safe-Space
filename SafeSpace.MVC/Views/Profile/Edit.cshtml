@@ -1,0 +1,39 @@
+﻿@model SafeSpace.Domain.Entities.User
+
+<h2 class="page-title">Edit Profile</h2>
+
+<div class="profile-card">
+
+    <form asp-action="Edit" asp-controller="Profile" onsubmit="if (!$(this).valid()) { return false; } this.querySelector('button[type=submit]').disabled = true;">
+
+        <label asp-for="Name"  class="custom-label">Name</label>
+
+        <input asp-for="Name" class="custom-input" />
+                         
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+
+
+        <input asp-for="Id" type="hidden" />
+
+
+
+        <label asp-for="Email" class="custom-label">Email</label>
+
+        <input asp-for="Email" class="custom-input" />
+
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+
+
+        <label asp-for="DateOfBirth" class="custom-label">Date of birth</label>
+
+        <input asp-for="DateOfBirth" type="date" class="custom-input" />
+
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+        <button type="submit" class="btn edit-btn">Save Changes</button>
+
+    </form>
+
+</div>

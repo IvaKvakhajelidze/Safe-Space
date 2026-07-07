@@ -1,0 +1,83 @@
+﻿@model SafeSpace.MVC.Models.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="profile-container">
+    <div class="profile-card">
+
+        <div class="profile-avatar">@Model.User.Name.Substring(0, 1).ToUpper()</div>
+
+        <h2>@Model.User.Name</h2>
+
+        <p class="profile-subtitle">SafeSpace member</p>
+
+        <hr />
+
+        <div class="profile-info">
+
+            <div class="info-item">
+
+                <strong>Email</strong>
+                <p>@Model.User.Email</p>
+
+            </div>
+
+            <div class="info-item">
+
+                <strong>Date of birth</strong>
+                <p>@Model.User.DateOfBirth.ToShortDateString()</p>
+
+            </div>
+
+        </div>
+
+        <div class="profile-buttons">
+
+            <a asp-action="Edit" asp-controller="Profile" class="btn edit-btn">Edit Profile</a>
+
+            <a asp-action="Delete" class="btn delete-btn">Delete Account</a>
+
+            <a asp-action="Logout" asp-controller="Profile" class="btn logout-btn">Logout</a>
+
+            <a asp-controller="Home" asp-action="Index" class="btn home-btn">Back Home</a>
+
+        </div>
+
+        <div class="my-stories-section">
+
+            <h3>My Stories</h3>
+
+            @if (Model.Stories.Any())
+            {
+                @foreach (var story in Model.Stories)
+                {
+                    <div class="my-story-card">
+
+                        <h5>@story.Title</h5>
+
+                        <p>@story.Text</p>
+
+                        <small>@story.CreatedAt</small>
+
+                        <form asp-controller="Story" asp-action="Delete" method="post">
+
+                            <input type="hidden" name="storyId" value="@story.Id" />
+
+                            <button class="btn delete-story-btn">Delete</button>
+
+                        </form>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <p>You haven't posted any stories yet.</p>
+            }
+
+        </div>
+
+    </div>
+</div>

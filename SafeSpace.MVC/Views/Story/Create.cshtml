@@ -1,0 +1,59 @@
+﻿@model SafeSpace.Domain.Entities.Story
+
+@{
+    ViewData["Title"] = "Post Story";
+}
+
+<div class="story-create-container">
+    <div class="story-create-card">
+
+        <h1 class="story-create-title">Share Your Story</h1>
+
+        <p class="story-create-subtitle">This is your space. Speak freely and safely.</p>
+
+        <hr />
+
+        <form asp-action="Create" method="post" onsubmit="if (!$(this).valid()) { return false; } this.querySelector('button[type=submit]').disabled = true;">
+
+            <div asp-validation-summary="ModelOnly"class="text-danger"></div>
+
+            <div class="mb-4">
+
+                <label asp-for="Title" class="custom-label">Title</label>
+
+                <input asp-for="Title" class="custom-input" placeholder="Give your story a title..." />
+
+                <span asp-validation-for="Title" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="mb-4">
+
+                <label asp-for="Text" class="custom-label">Story</label>
+
+                <textarea asp-for="Text" class="story-textarea" rows="8" placeholder="Write your story here..."></textarea>
+
+                <span asp-validation-for="Text" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="story-buttons">
+
+                <button type="submit" class="btn post-story-btn">Post Story</button>
+
+                <a asp-controller="Home" asp-action="Index" class="btn home-btn">Cancel</a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

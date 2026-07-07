@@ -1,0 +1,21 @@
+﻿@model SafeSpace.Domain.Entities.User
+
+<div class="profile-container">
+    <div class="profile-card text-center">
+
+        <h2>Delete Account</h2>
+
+        <p>This action cannot be undone.</p>
+
+        <p>Are you sure you want to delete your account?</p>
+
+        <form asp-action="DeleteConfirmed" onsubmit="if (!$(this).valid()) { return false; } this.querySelector('button[type=submit]').disabled = true;">
+
+            <button type="submit" class="btn delete-btn">Delete Forever</button>
+
+            <a asp-action="Index" class="btn home-btn">Cancel</a>
+
+        </form>
+
+    </div>
+</div>
